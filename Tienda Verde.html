@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="widht=device-width, initial-scale=1.0">
@@ -18,10 +18,9 @@
 
             <div id="menu" class="collapse">
                 <ul id="menu-ul"></ul>
-                    <li><a href="http://127.0.0.1:3000/c:/Users/Javier/a1/Tienda Verde.html"><h3>Pagina Principal</h3></a></li>
                     <li><a href="#Productos"><h3>Todos Los Productos</h3></a></li>
                     <li><a href="#prod-destacados"><h3>Productos destacados</h3></a></li>
-                    <li><a href="#Formulario"><h3>Formulario De Reciclaje</h3></a></li>
+                    <li><a href="#form-section"><h3>Formulario De Reciclaje</h3></a></li>
                 </ul>
             </div>   
         </nav>
@@ -85,5 +84,124 @@
                 </button>
               </div>
         </div>
+        <div id="separador-productos-formulario">
+            <h4><a href="">Clickeame para ver todos los productos!</a></h4>
+        </div>
+        <section id="form-section">
+            <div class="container" id="formulario-recoleccion">
+                <h1 class="text-center">Formulario de Recolección de Residuos</h1>
+                <form id="wasteCollectionForm" class="needs-validation" novalidate>
+
+                    <h5 class="mb-3"><b>Selección de Residuos</b></h5>
+                   <div class="mb-3">
+                    <label for="tipoResiduos" class="form-label">Tipo de Residuo*</label>
+                    <select class="form-select" id="tipoResiduos" required>
+                      <option value="">Selecciona un tipo de residuo</option>
+                      <option value="plastico">Plástico</option>
+                      <option value="papel">Papel</option>
+                      <option value="vidrio">Vidrio</option>
+                      <option value="metales">Metales</option>
+                      <option value="electronicos">Electrónicos</option>
+                    </select>
+                    <div class="invalid-feedback">Por favor, selecciona un tipo de residuo.</div>
+                  </div>
+            
+                  
+                  <div class="mb-3">
+                    <label for="subcategoriaResiduos" class="form-label">Subcategoría de Residuo*</label>
+                    <select class="form-select" id="subcategoriaResiduos" required>
+                      <option value="">Selecciona una subcategoría</option>
+                    </select>
+                    <div class="invalid-feedback">Por favor, selecciona una subcategoría de residuo.</div>
+                  </div>
+
+                  <h5 class="mb-3"><b>Datos Personales</b></h5>
+                  <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre*</label>
+                    <input type="text" class="form-control" id="nombre" placeholder="Nombre completo" required>
+                    <div class="invalid-feedback">Por favor, ingresa tu nombre.</div>
+                  </div>
+            
+                  
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Correo Electrónico*</label>
+                    <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com" required>
+                    <div class="invalid-feedback">Por favor, ingresa un correo electrónico válido.</div>
+                  </div>
+            
+
+                  <div class="mb-3">
+                    <label for="direccion" class="form-label">Dirección*</label>
+                    <input type="text" class="form-control" id="direccion" placeholder="Dirección de recolección" required>
+                    <div class="invalid-feedback">Por favor, ingresa una dirección válida.</div>
+                  </div>
+            
+                  <div class="mb-3">
+                    <label for="comentarios" class="form-label">Comentarios Adicionales</label>
+                    <textarea class="form-control" id="comentarios" rows="3" placeholder="Agregar notas adicionales"></textarea>
+                  </div>
+            
+                  <button type="submit" class="btn btn-primary mt-4" id="enviar-btn">Enviar</button>
+                </form>
+              </div>
+            
+             
+            
+              <!-- JavaScript-->
+              <script>
+                document.getElementById('tipoResiduos').addEventListener('change', function () {
+                  var tipo = this.value;
+                  var subcategoria = document.getElementById('subcategoriaResiduos');
+                  
+                  
+                  subcategoria.innerHTML = '<option value="">Selecciona una subcategoría</option>';
+            
+                 
+                  var opciones = {
+                    plastico: ['Botellas', 'Envases', 'Bolsas'],
+                    papel: ['Periódicos', 'Revistas', 'Cartón'],
+                    vidrio: ['Botellas de vidrio', 'Frascos', 'Cristalería'],
+                    metales: ['Latas', 'Cables', 'Electrodomésticos pequeños'],
+                    electronicos: ['Teléfonos móviles', 'Baterías', 'Componentes de computadoras']
+                  };
+            
+                 
+                  if (opciones[tipo]) {
+                    opciones[tipo].forEach(function (opcion) {
+                      var newOption = document.createElement('option');
+                      newOption.value = opcion.toLowerCase().replace(/ /g, '-');
+                      newOption.textContent = opcion;
+                      subcategoria.appendChild(newOption);
+                    });
+                  }
+                });
+            
+                
+                (function () {
+                  'use strict';
+                  var forms = document.querySelectorAll('.needs-validation');
+                  Array.prototype.slice.call(forms).forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                      if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                      }
+                      form.classList.add('was-validated');
+                    }, false);
+                  });
+                })();
+              </script>
+        </section>
+        <footer id="footer">
+            <div id="contactos">
+                <h3 id="contactanos"><u>Contactanos</u></h3>
+                <ul id="links-contactos">
+                    <li><a href="mailto:TiendaVerde@gmail.com">Email</a></li>
+                    <li><a href="tele:+56912345678">Telefono</a></li>
+                    <li><a href="instagram.com/Tienda_verde">Instagram</a></li>
+                    <li><a href="facebook.com/Tienda_verde">Facebook</a></li>
+                </ul>
+            </div>
+        </footer>
     </body>
 </html>
