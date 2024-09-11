@@ -102,3 +102,14 @@
     padding-top: 5px;
     padding-left: 10px;
 }
+#catalogo{
+    font-family: "Times New Roman", Times, serif;
+    background-color: rgb(2, 42, 15);
+}
+#row-catalogo{
+    padding: 3%;
+}
+.card-img-top{
+    width:auto;
+    height: 300px;;
+}
